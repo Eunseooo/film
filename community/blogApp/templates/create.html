@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+    <h1>글</h1>
+    <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%} 
+        <p>title: <input type="text" name="title" ></p>
+        <p>writer: <input type="text" name="writer" ></p>
+        <p>body: <textarea name="body" cols="30" rows="10"></textarea></p>
+        <p>image: <input type="file" name="image"></p>
+        <button type="submit">작성</button>
+        
+    </form>
+</body>
+</html>

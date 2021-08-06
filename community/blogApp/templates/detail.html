@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+
+    <p>{{title}}</p>
+    <p>{{writer}}</p>
+    <p>{{pub_date}}</p>
+    <p>{{body}}</p>
+    <img src="{{image.url}}" height="300"/>
+    <p>
+        
+    </p>
+    <a href="{% url 'update_page' id %}">수정</a>
+    <a href="{% url 'delete' id %}">삭제</a>
+    
+    <h4>------------------------댓글----------------------</h4>
+    {% for comment in comments %}
+    <p>
+        {{comment.user}} | {{comment.content}} , {{comment.date}}
+        <a href="{% url 'delete_comment' id comment.id %}">삭제</a>
+    </p>
+    {% endfor%}
+    <h4>-------------------댓글 작성----------------------</h4>
+
+    <form action="{% url 'create_comment' id %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%} 
+        <p>user: <input type="text" name="user" value="{{user}}"></p>
+        <p>content: <input type="text" name="content" value="{{content}}"></p>
+        <button type="submit">작성</button>
+    </form>
+
+</body>
+</html>
