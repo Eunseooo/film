@@ -3,14 +3,22 @@ from .models import Blog ,Comment
 from django.utils import timezone
 # Create your views here.
 
-# main 페이지 만들기임 
+# main 페이지 만들기임
+def mainpage(request):
+    return render(request,'main.html')
+
+def mypage(request):
+    return render(request,'myPage.html')
+
+def cameraTest(request):
+    return render(request,'cameraTest.html')
 
 def main(request):
     blogs = Blog.objects.all()
     context = {
         'blogs' : blogs
     }
-    return render(request,'main.html',context)
+    return render(request,'community.html',context)
 
 # detail 페이지 만들기    title 이런게 나옴
 def detail(request,id):
@@ -26,11 +34,11 @@ def detail(request,id):
         'image' : detail_data.image
     }
 
-    return render(request,'detail.html',context)
+    return render(request,'community_detail.html',context)
 
 # 기본 create 페이지 
 def create_page(request):
-    return render(request,'create.html')
+    return render(request,'community_create.html')
 
 # create 를 작성하는 함수
 def create(request):
@@ -55,7 +63,7 @@ def update_page(request,id):
         'pub_date' : update_page.pub_date,
         'image' : update_page.image 
     }
-    return render(request,'update.html',context)
+    return render(request,'community_update.html',context)
 
 def update(request,id):
     update_data = get_object_or_404(Blog,pk=id)
@@ -96,3 +104,4 @@ def delete_comment(request,id,comment_id):
     comment.delete()
 
     return redirect('detail', id)
+    
