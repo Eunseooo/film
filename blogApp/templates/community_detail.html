@@ -1,38 +1,127 @@
+
+
+
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-</head>
-
-    <p>{{title}}</p>
-    <p>{{writer}}</p>
-    <p>{{pub_date}}</p>
-    <p>{{body}}</p>
-    <img src="{{image.url}}" height="300"/>
-    <p>
-        
-    </p>
-    <a href="{% url 'update_page' id %}">수정</a>
-    <a href="{% url 'delete' id %}">삭제</a>
-    
-    <h4>------------------------댓글----------------------</h4>
-    {% for comment in comments %}
-    <p>
-        {{comment.user}} | {{comment.content}} , {{comment.date}}
-        <a href="{% url 'delete_comment' id comment.id %}">삭제</a>
-    </p>
-    {% endfor%}
-    <h4>-------------------댓글 작성----------------------</h4>
-
-    <form action="{% url 'create_comment' id %}" method="POST" enctype="multipart/form-data">
-        {%csrf_token%} 
-        <p>user: <input type="text" name="user" value="{{user}}"></p>
-        <p>content: <input type="text" name="content" value="{{content}}"></p>
-        <button type="submit">작성</button>
-    </form>
-
-</body>
-</html>
+<html>
+  <head>
+    <title>Filsamero</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+		<!-- Main -->
+		<div id="main">
+		  <div class="inner">
+			<!-- Header -->
+			<header id="header">
+			  <a href="main.html" class="logo"><strong>Filsamero</strong></a>
+			  <ul class="icons">
+				<li>
+				  <a href="#" class="icon brands fa-twitter"
+					><span class="label">Twitter</span></a
+				  >
+				</li>
+				<li>
+				  <a href="#" class="icon brands fa-facebook-f"
+					><span class="label">Facebook</span></a
+				  >
+				</li>
+				<li>
+				  <a href="#" class="icon brands fa-snapchat-ghost"
+					><span class="label">Snapchat</span></a
+				  >
+				</li>
+				<li>
+				  <a href="#" class="icon brands fa-instagram"
+					><span class="label">Instagram</span></a
+				  >
+				</li>
+				<li>
+				  <a href="#" class="icon brands fa-medium-m"
+					><span class="label">Medium</span></a
+				  >
+				</li>
+			  </ul>
+			</header>
+  
+			<!-- Banner -->
+			<section id="banner">
+			  <div class="content">
+                <h1>{{title}}</h1>
+                <h3>{{writer}}</h3>
+                <h4>{{pub_date}}</h4>
+                <h2>{{body}}</h2>
+                <img src="{{image.url}}" height="300"/>
+                <p>
+                    
+                </p>
+                <a href="{% url 'update_page' id %}">수정</a>
+                <a href="{% url 'delete' id %}">삭제</a>
+                
+                <h4>------------------------댓글----------------------</h4>
+                {% for comment in comments %}
+                <p>
+                    {{comment.user}} | {{comment.content}} , {{comment.date}}
+                    <a href="{% url 'delete_comment' id comment.id %}">삭제</a>
+                </p>
+                {% endfor%}
+                <h4>-------------------댓글 작성----------------------</h4>
+            
+                <form action="{% url 'create_comment' id %}" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%} 
+                    <p>user: <input type="text" name="user" value="{{user}}"></p>
+                    <p>content: <input type="text" name="content" value="{{content}}"></p>
+                    <button type="submit">작성</button>
+                </form>
+                
+			  </div>
+			</section>
+		  </div>
+		</div>
+  
+		<!-- Sidebar -->
+		<div id="sidebar">
+		  <div class="inner">
+			<!-- Search -->
+			<section id="search" class="alt">
+			  <form method="post" action="#">
+				<input type="text" name="query" id="query" placeholder="Search" />
+			  </form>
+			</section>
+  
+			<!-- Menu -->
+			<nav id="menu">
+			  <header class="major">
+				<h2>Menu</h2>
+			  </header>
+              <ul>
+                <li><a href="{% url 'mainpage' %}">Homepage</a></li>
+                <li><a href="{% url 'main' %}">Community</a></li>
+                <li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
+                <li><a href="{% url 'mypage' %}">My page</a></li>
+              </ul>
+			</nav>
+  
+			<!-- Footer -->
+			<footer id="footer">
+			  <p class="copyright">&copy; Untitled. All rights reserved.</p>
+			</footer>
+		  </div>
+		</div>
+	  </div>
+  
+	  <!-- Scripts -->
+	  <script src="static/js/jquery.min.js"></script>
+	  <script src="static/js/browser.min.js"></script>
+	  <script src="static/js/breakpoints.min.js"></script>
+	  <script src="static/js/util.js"></script>
+	  <script src="static/js/main.js"></script>
+	</body>
+  </html>
