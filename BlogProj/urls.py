@@ -20,10 +20,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from blogApp.views import main, detail,create_page, create, update , update_page, delete , create_comment, delete_comment
+from blogApp.views import *
 urlpatterns = [
-    path('admin/', admin.site.urls), # 원래 있던 거 
-    path('', main, name="main"), # main page
+    path('admin/', admin.site.urls), # 원래 있던 거
+    path('', mainpage, name="mainpage"), # main page
+    path('community/', main, name="main"), # community
+    path('myPage/', mypage, name="mypage"),
+    path('cameraTest/', cameraTest, name="cameraTest"),
     path('detail/<int:id>/', detail, name="detail"),  # detail 페이지
     path('create_page/', create_page, name="create_page"), # 글 작성
     path('create/', create, name= 'create'), # 글 작성 
