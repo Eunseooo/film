@@ -20,6 +20,12 @@
 			<!-- Header -->
 			<header id="header">
 			  <a href="{% url 'mainpage' %}" class="logo"><strong>Filsamero</strong></a>
+			  {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
+			  <a href = "{% url 'logout' %}" >로그아웃</a>
+		  {% else %} <!--로그인이 되어있지 않은 경우 -->
+			  <a href = "{% url 'login' %}">로그인</a>
+			  <a href = "{% url 'signup' %}">회원가입</a>
+		  {% endif %}
 			  <ul class="icons">
 				<li>
 				  <a href="#" class="icon brands fa-twitter"
@@ -53,12 +59,7 @@
 			<section id="banner">
 			  <div class="content">
                 <form class="d-flex">           
-                    {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
-                        <a href = "{% url 'logout' %}" >로그아웃</a>
-                    {% else %} <!--로그인이 되어있지 않은 경우 -->
-                        <a href = "{% url 'login' %}">로그인</a>
-                        <a href = "{% url 'signup' %}">회원가입</a>
-                    {% endif %}
+
                 </form>
             
                 <div class = "text-center">
