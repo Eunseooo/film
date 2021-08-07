@@ -35,6 +35,9 @@ urlpatterns = [
     path('delete/<int:id>/', delete, name= "delete"), # 글 삭제 
     path('detail/<int:id>/comments/create/', create_comment, name= "create_comment"), # 댓글 작성
     path('detail/<int:id>/comments/delete/<int:comment_id>', delete_comment, name= "delete_comment"), # 댓글 삭제 
+    path('login/', login_view, name = "login"),
+    path('logout/', logout_view, name = "logout"),
+    path('signup/', signup_view, name = "signup" ),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) 
