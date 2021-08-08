@@ -23,6 +23,9 @@ def mypage(request):
 def cameraTest(request):
     return render(request,'cameraTest.html')
 
+def camerashop(request):
+    return render(request,'camerashop.html')
+
 def main(request):
     blogs = Blog.objects.all()
     paginator = Paginator(blogs,6)
