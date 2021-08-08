@@ -150,7 +150,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("main")
+    return redirect("mainpage")
 
 def signup_view(request):
     if request.method == "POST": #요청방식이 POST
@@ -158,7 +158,7 @@ def signup_view(request):
         if form.is_valid(): #form 유효성 검사
             user = form.save()
             login(request, user)
-            return redirect("main")
+            return redirect("mainpage")
         else:
             last_messages = messages.get_messages(request)
             last_messages.used = True
