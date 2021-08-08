@@ -132,13 +132,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static'),
-)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'blogApp','static')]
+#static 파일들이 어디에 있는지를 쓰는곳
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_ROOT= os.path.join(BASE_DIR,'static')
+#static 파일들이 어디로 모일 것인지를 쓰는 곳
 
 
 
