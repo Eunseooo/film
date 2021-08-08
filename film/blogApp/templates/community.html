@@ -72,9 +72,7 @@
 			  <div class="features">
 				{% for i in blogs %}
 				<article>
-				  <span class="icon">
-					<img src="{{image.url}}" height="30"/>
-				  </span>
+
 				  <div class="content">
 					<h3>{{i.writer}}</h3>
 					<p>{{i.writer}}님의 감각적인 사진 블라블라</p>
@@ -127,6 +125,7 @@
 			  <ul>
 				<li><a href="{% url 'mainpage' %}">Homepage</a></li>
 				<li><a href="{% url 'main' %}">Community</a></li>
+				<li><a href="{% url 'camerashop' %}">cameraShop</a></li>
 				<li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
 				<li><a href="{% url 'mypage' %}">My page</a></li>
 			  </ul>
