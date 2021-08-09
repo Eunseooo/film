@@ -72,17 +72,19 @@
                 <p>
                     
                 </p>
-                <a href="{% url 'update_page' id %}">수정</a>
-                <a href="{% url 'delete' id %}">삭제</a>
+                <section>
+					<header class="major">
+					  <h4>댓글</h4>
+					</header>
+				  </section>
                 
-                <h4>------------------------댓글----------------------</h4>
                 {% for comment in comments %}
                 <p>
                     {{comment.user}} | {{comment.content}} , {{comment.date}}
                     <a href="{% url 'delete_comment' id comment.id %}">삭제</a>
                 </p>
                 {% endfor%}
-                <h4>-------------------댓글 작성----------------------</h4>
+                
             
                 <form action="{% url 'create_comment' id %}" method="POST" enctype="multipart/form-data">
                     {%csrf_token%} 
