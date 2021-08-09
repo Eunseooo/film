@@ -27,6 +27,7 @@ urlpatterns = [
     path('community/', main, name="main"), # community
     path('myPage/', mypage, name="mypage"),
     path('cameraTest/', cameraTest, name="cameraTest"),
+    path('camerashop/', camerashop, name="camerashop"),
     path('detail/<int:id>/', detail, name="detail"),  # detail 페이지
     path('create_page/', create_page, name="create_page"), # 글 작성
     path('create/', create, name= 'create'), # 글 작성 
@@ -40,4 +41,5 @@ urlpatterns = [
     path('signup/', signup_view, name = "signup" ),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) 
+urlpatterns += \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

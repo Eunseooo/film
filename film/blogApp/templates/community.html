@@ -70,35 +70,20 @@
 				<h2>베스트 작가</h2>
 			  </header>
 			  <div class="features">
+				{% for i in blogs %}
 				<article>
-				  <span class="icon fa-gem"></span>
+
 				  <div class="content">
-					<h3>변은서</h3>
-					<p>은서님의 감각적인 사진 블라블라</p>
+					<h3>{{i.writer}}</h3>
+					<p>{{i.writer}}님의 감각적인 사진 블라블라</p>
+					
+					<ul class="actions">
+						<li><a href="{% url 'detail' i.id %}" class="button">More</a></li>
+					</ul>
+					
 				  </div>
 				</article>
-				<article>
-				  <span class="icon solid fa-paper-plane"></span>
-				  <div class="content">
-					<h3>박효원</h3>
-					<p>효원님의 감각적인 사진 블라블라</p>
-				  </div>
-				</article>
-				<article>
-				  <span class="icon solid fa-rocket"></span>
-				  <div class="content">
-					<h3>임다민</h3>
-					<p>다민님의 감각적인 사진 블라블라</p>
-				  </div>
-				</article>
-				<article>
-				  <span class="icon solid fa-signal"></span>
-				  <div class="content">
-					<h3>박진주</h3>
-					<p>진주님의 감각적인 사진 블라블라</p>
-				  </div>
-				</article>
-			  </div>
+				{% endfor %}
 			</section>
   
 			<!-- Section -->
@@ -140,6 +125,7 @@
 			  <ul>
 				<li><a href="{% url 'mainpage' %}">Homepage</a></li>
 				<li><a href="{% url 'main' %}">Community</a></li>
+				<li><a href="{% url 'camerashop' %}">cameraShop</a></li>
 				<li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
 				<li><a href="{% url 'mypage' %}">My page</a></li>
 			  </ul>

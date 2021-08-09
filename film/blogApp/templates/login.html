@@ -62,7 +62,7 @@
                 <div class = "text-center">
                     <form>
 						<h1>로그인 페이지</h1>
-				
+
 						{% if messages %}
 						<ul class="messages">
 							{% for message in messages %}
@@ -100,6 +100,7 @@
               <ul>
                 <li><a href="{% url 'mainpage' %}">Homepage</a></li>
                 <li><a href="{% url 'main' %}">Community</a></li>
+				<li><a href="{% url 'camerashop' %}">cameraShop</a></li>
                 <li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
                 <li><a href="{% url 'mypage' %}">My page</a></li>
               </ul>

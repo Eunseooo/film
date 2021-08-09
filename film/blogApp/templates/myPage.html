@@ -1,118 +1,444 @@
 
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Page</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  </head>
-  <body class="is-preload">
+<html class="no-js"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>portfolio</title>
+    <meta name="description" content="">
+    <!-- 
+    Volton Template
+    http://www.templatemo.com/tm-441-volton
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Noto+Serif:ital@1&family=STIX+Two+Text:ital@1&display=swap" rel="stylesheet">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+<style>
+/*like it*/
+img {
+  width: 100%; /* need to overwrite inline dimensions */
+  height: auto;
+}
+h2 {
+  margin-bottom: .5em;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
 
 
-    <!-- Wrapper -->
-    <div id="wrapper">
-		<!-- Main -->
-		<div id="main">
-		  <div class="inner">
-			<!-- Header -->
-			<header id="header">
-				
-			  <a href="{% url 'mainpage' %}" class="logo"><strong>Filsamero</strong></a>
-			  {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
-			  <a href = "{% url 'logout' %}" >로그아웃</a>
-			  {% else %} <!--로그인이 되어있지 않은 경우 -->
-			  <a href = "{% url 'login' %}" >로그인</a>
-			  <a href = "{% url 'signup' %}">회원가입</a>
-			  {% endif %}
+/* hover styles */
+.location-listing {
+  position: relative;
+}
 
-	  			{% if user.is_authenticated %}
-	  			{{user.username}}님 안녕하세요 !
-	  			{% endif %}
-			  <ul class="icons">
-				<li>
-				  <a href="#" class="icon brands fa-twitter"
-					><span class="label">Twitter</span></a
-				  >
-				</li>
-				<li>
-				  <a href="#" class="icon brands fa-facebook-f"
-					><span class="label">Facebook</span></a
-				  >
-				</li>
-				<li>
-				  <a href="#" class="icon brands fa-snapchat-ghost"
-					><span class="label">Snapchat</span></a
-				  >
-				</li>
-				<li>
-				  <a href="#" class="icon brands fa-instagram"
-					><span class="label">Instagram</span></a
-				  >
-				</li>
-				<li>
-				  <a href="#" class="icon brands fa-medium-m"
-					><span class="label">Medium</span></a
-				  >
-				</li>
-			  </ul>
-			</header>
+.location-image {
+  line-height: 0;
+  overflow: hidden;
+}
 
-			<!-- Banner -->
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.location-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(90,0,10,0.4);
+  color: white;
   
-			<!-- Section -->
-			<section>
-        <h1>자유롭게 편집해주세용</h1>
-			</section>
+/* position the text in t’ middle*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-listing:hover .location-title {
+  opacity: 1;
+}
+
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
+
+
+/* for touch screen devices */
+@media (hover: none) { 
+  .location-title {
+    opacity: 1;
+  }
+  .location-image img {
+    filter: blur(2px);
+  }
+}
+     <!--porfolio-->
+     div.gallery {
+       border: 0px solid #ccc;
+     }
+     
+     div.gallery:hover {
+       border: 1px solid #777;
+     }
+     
+     div.gallery img {
+       width: 100%;
+       height: auto;
+     }
+     
+     div.desc {
+       padding: 15px;
+       text-align: center;
+     }
+     
+     * {
+       box-sizing: border-box;
+     }
+     
+     .responsive {
+       padding: 0 px;
+       float: left;
+       width: 24.99999%;
+     }
+     
+     @media only screen and (max-width: 700px) {
+       .responsive {
+         width: 49.99999%;
+         margin: 6px 0;
+       }
+     }
+     
+     @media only screen and (max-width: 500px) {
+       .responsive {
+         width: 100%;
+       }
+     }
+     
+     .clearfix:after {
+       content: "";
+       display: table;
+       clear: both;
+     }
+
+     .port-title {
+     font-size: 17px;
+     font-family: 'Noto Serif KR', serif;
+     margin-bottom: 15px;
+     }
+
+     
+</style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+      
+    <div class="responsive-header visible-xs visible-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="top-section">
+                        <div class="profile-image">
+                            <img src="{% static 'img/profile.jpg' %}" alt="Volton">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+    
+
+     <!-- Sidebar -->
+     <div id="sidebar">
+      <div class="inner">
+        
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="{% url 'mainpage' %}">Homepage</a></li>
+            <li><a href="{% url 'main' %}">Community</a></li>
+            <li><a href="{% url 'camerashop' %}">cameraShop</a></li>
+            <li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
+            <li><a href="{% url 'mypage' %}">My page</a></li>
+          </ul>
+          
+        </nav>
+        
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; Untitled. All rights reserved.</p>
+        </footer>
+        
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
   
-			<!-- Section -->
-			<section>
-			 <h1>자유롭게 편집해주세용</h1>
-			</section>
-		  </div>
-		</div>
-  
-		<!-- Sidebar -->
-		<div id="sidebar">
-		  <div class="inner">
-			<!-- Search -->
-			<section id="search" class="alt">
-			  <form method="post" action="#">
-				<input type="text" name="query" id="query" placeholder="Search" />
-			  </form>
-			</section>
-  
-			<!-- Menu -->
-			<nav id="menu">
-			  <header class="major">
-				<h2>Menu</h2>
-			  </header>
-			  <ul>
-				<li><a href="{% url 'mainpage' %}">Homepage</a></li>
-				<li><a href="{% url 'main' %}">Community</a></li>
-				<li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
-				<li><a href="{% url 'mypage' %}">My page</a></li>
-			  </ul>
-			</nav>
-  
-			<!-- Footer -->
-			<footer id="footer">
-			  <p class="copyright">&copy; Untitled. All rights reserved.</p>
-			</footer>
-		  </div>
-		</div>
-	  </div>
-  
-	  <!-- Scripts -->
-	  <script src="static/js/jquery.min.js"></script>
-	  <script src="static/js/browser.min.js"></script>
-	  <script src="static/js/breakpoints.min.js"></script>
-	  <script src="static/js/util.js"></script>
-	  <script src="static/js/main.js"></script>
-	</body>
-  </html>
-  
+    
+    
+
+    <div class="main-content">
+        <div class="fluid-container">
+            <div class="content-wrapper">
+
+            <!--프로필사진-->
+            <div class="page-section" >
+              
+                <img src="{% static 'img/profile.jpg'%}" style="vertical-align:middle; width: 180px;" class="img-circle" >
+                  <span style="margin-top:20px; font-size:30px; margin-left: 40px; margin-bottom: 30px; font-family: 'STIX Two Text', serif;">
+                    <strong>JOY</strong></span>
+
+                    <button class="btn btn-default" type="submit" 
+                    style="margin-top:20px; font-size:15px; margin-left: 30px; margin-bottom: 30px; font-family: 'STIX Two Text', serif;">
+                      <italic># Minolta Hi- Matic</italic></button>
+                    <button class="btn btn-default" type="submit" 
+                    style="margin-top:20px; font-size:15px; margin-bottom: 30px; font-family: 'STIX Two Text', serif;">
+                      <italic># Kodac M35</italic></button>
+                    <button class="btn btn-default" type="submit" 
+                    style="margin-top:20px; font-size:15px;  margin-bottom: 30px; font-family: 'STIX Two Text', serif;">
+                      <italic># Toy Camera</italic></button>
+
+                </div>
+                
+                <br><br><br>
+
+
+                <!--title-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="port-title"># 강릉 # 일상</h4>
+                            
+              
+            </div>
+
+            <!-- 포트폴리오-->
+            <div class="responsive">
+              
+                <div class="gallery">
+                  <a target="_blank" href="img/7.jpg">
+                    <img src="{% static 'img/7.jpg'%}" alt="" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.06</div>
+                </div>
+              </div>
+              
+              
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/8.jpg">
+                    <img src="{% static 'img/8.jpg'%}" alt="Forest" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.09</div>
+                </div>
+            </div>
+              
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/9.jpg">
+                    <img src="{% static 'img/9.jpg'%}" alt="Northern Lights" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.11</div>
+                </div>
+            </div>
+              
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/10.jpg">
+                    <img src="{% static 'img/10.jpg'%}" alt="Mountains" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.12</div>
+                </div>
+            </div>
+              
+            <div class="clearfix"></div>
+
+
+            <hr>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="port-title"># 하늘 # 스톡홀름</h4>
+
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/11.jpg">
+                    <img src="{% static 'img/11.jpg'%}" alt="Mountains" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.19</div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/12.jpg">
+                    <img src="{% static 'img/12.jpg'%}" alt="Mountains" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.20</div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/13.jpg">
+                    <img src="{% static 'img/13.jpg'%}" alt="Mountains" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.21</div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                  <a target="_blank" href="img/14.jpg">
+                    <img src="{% static 'img/14.jpg'%}" alt="Mountains" width="600" height="400">
+                  </a>
+                  <div class="desc">2021.08.22</div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <hr>
+
+            </div>
+        </div>
+
+        <!--likeit-->
+
+    <div class="child-page-listing">
+
+      <h2 style="font-family:'STIX Two Text', serif; font-size: 18px;"><strong>I Like It !</strong></h2>
+    
+      <div class="grid-container">
+    
+        <article id="3685" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Eunseoo           </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/1.jpg'%}" alt="">    </a>
+    
+          </div>
+    
+        </article>
+    
+        <article id="3688" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Damin            </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/2.jpg'%}" alt="">  </a>
+    
+          </div>
+    
+        </article>
+    
+        <article id="3691" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Jinju           </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/3.jpg'%}" alt="">  </a>
+    
+          </div>
+    
+        </article>
+    
+        <article id="3694" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Hyowon           </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/4.jpg'%}" alt="">  </a>
+    
+          </div>
+    
+        </article>
+    
+        <article id="3697" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Pil           </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/5.jpg'%}" alt="">    </a>
+    
+          </div>
+    
+        </article>
+    
+        <article id="3700" class="location-listing">
+    
+          <a class="location-title" href="#">
+              by Jae           </a>
+    
+          <div class="location-image">
+            <a href="#">
+                <img width="300" height="169" src="{% static 'img/6.jpg'%}" alt="">          
+              </a>
+          </div>
+    
+        </article>
+    
+      </div>
+      <!-- end grid container -->
+    
+    </div>
+
+    <hr>
+    
+    </div>
+    
+            
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/min/plugins.min.js"></script>
+    <script src="js/min/main.min.js"></script>
+            
+            
+    </body>
+</html>

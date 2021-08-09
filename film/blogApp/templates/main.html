@@ -74,7 +74,7 @@
               </ul>
             </div>
             <span class="image object">
-              <img src="../images/mainPage.jpeg" alt="" />
+              <img src="{% static 'img/mainPage.jpeg' %}" alt="" />
             </span>
           </section>
 
@@ -216,6 +216,7 @@
             <ul>
               <li><a href="{% url 'mainpage' %}">Homepage</a></li>
               <li><a href="{% url 'main' %}">Community</a></li>
+              <li><a href="{% url 'camerashop' %}">cameraShop</a></li>
               <li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
               <li><a href="{% url 'mypage' %}">My page</a></li>
             </ul>
