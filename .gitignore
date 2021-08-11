@@ -1,5 +1,8 @@
 secrets.json
 
+### venv ###
+myvenv/*
+
 ### Django ###
 *.log
 *.pot
