@@ -1,72 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>camera Shop </title>
-
-  <!-- Bootstrap core CSS -->
+<html>
+  <head>
+    <title>Filsamero</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+   <link rel="stylesheet" href="{% static 'css/main.css' %}" />  
+ <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
 
-</head>
+  </head>
+  
+  <body> 
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <!-- Header -->
+          <header id="header">
+            <a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
+            /></a>
+            {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
+            <a href = "{% url 'logout' %}" >로그아웃</a>
+            {% else %} <!--로그인이 되어있지 않은 경우 -->
+            <a href = "{% url 'login' %}" >로그인</a>
+            <a href = "{% url 'signup' %}">회원가입</a>
+            {% endif %}
+    
+              {% if user.is_authenticated %}
+              {{user.username}}님 안녕하세요!
+              {% endif %}
+            <ul class="icons">
+              <li>
+                <a href="#" class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-facebook-f"
+                  ><span class="label">Facebook</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-snapchat-ghost"
+                  ><span class="label">Snapchat</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-instagram"
+                  ><span class="label">Instagram</span></a
+                >
+              </li>
+              <li>
+                <a href="#" class="icon brands fa-medium-m"
+                  ><span class="label">Medium</span></a
+                >
+              </li>
+            </ul>
+          </header>
 
-<body>
+       <!-- /.col-lg-3 -->
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Filsamiro</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="container">
-
-    <div class="row">
-
-      <div class="col-lg-3">
-
-       <br>
-        <div class="list-group">
-          <a href="#" class="list-group-item">카메라</a>
-          <a href="#" class="list-group-item">커뮤니티</a>
-          <a href="#" class="list-group-item">마이페이지</a>
-        </div>
-
-      </div>
-      <!-- /.col-lg-3 -->
-
-      <div class="col-lg-9">
+      <div class="col-lg-12">
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -76,13 +79,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="https://storage.googleapis.com/froma-web-image/openbook/094760ac-a0f4-4a7c-becb-13b9122e9db2.jpg" width="900px" height="300px" alt="First slide">
+              <img class="d-block img-fluid" src="https://storage.googleapis.com/froma-web-image/openbook/094760ac-a0f4-4a7c-becb-13b9122e9db2.jpg" width="1400px" height="600px"  alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="https://s3.ap-northeast-2.amazonaws.com/st.dangidata/hobby_conects/data/adm/lecture_manage/curriculum/983b9663e02e27c82fad394f461df90b.png" width="900px" height="300px" alt="Second slide">
+              <img class="d-block img-fluid" src="https://s3.ap-northeast-2.amazonaws.com/st.dangidata/hobby_conects/data/adm/lecture_manage/curriculum/983b9663e02e27c82fad394f461df90b.png" width="1400px" height="600px" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbKOdrg%2FbtquxsUAzdh%2ForsdrWHh21mGZozTVdsnM1%2Fimg.png" width="900px" height="300px" alt="Third slide">
+              <img class="d-block img-fluid" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbKOdrg%2FbtquxsUAzdh%2ForsdrWHh21mGZozTVdsnM1%2Fimg.png" width="1400px" height="600px" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -101,9 +104,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/201602/12256_shop1_251507.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">미놀타 Hi-Matic AF2</a>
-                </h5>
+                </h6>
                 <h5>₩229,000</h5>
                 <p class="card-text">81년 생산된 Minolta Hi-Matic AF-2입니다. 대표적인 Hi-Matic 시리즈 모델로 미놀타사 최초의 자동초점 카메라입니다.</p>
               </div>
@@ -117,9 +120,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/neverdye_7083.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">캐논 Canon AF35M</a>
-                </h5>
+                </h6>
                 <h5>₩362,000</h5>
                 <p class="card-text">1979년 출시된 세계최초의 AF 렌즈 셔터 카메라 입니다.캐논의 독자적인 AF모듈을 장착하였으며,화질이 뛰어나기로 유명합니다 </p>
               </div>
@@ -133,9 +136,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/20200422/6ab039d9668b0a0f977694228337c2b0.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">Kodak M35 토이카메라</a>
-                </h5>
+                </h6>
                 <h5>₩29,700</h5>
                 <p class="card-text">당신은 찍기만 하세요, 다회용 코닥 갬성 카메라! 일회용 필카 대용으로 좋아요</p>
               </div>
@@ -149,9 +152,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/neverdye_5195.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">Minolta Hi-Matic AF-D</a>
-                </h5>
+                </h6>
                 <h5>₩269,000</h5>
                 <p class="card-text">1979년 생산된 상당히 감성적 아날로그표현이 보장되는 가성비 좋은기종.f2.8 고정초점 단렌즈로 필름카메라 입문용으로 적합한 기종. </p>
               </div>
@@ -165,9 +168,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/201801/13856_shop1_781622.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">Nikon One Touch Zoom 90s</a>
-                </h5>
+                </h6>
                 <h5>품절</h5>
                 <p class="card-text">니콘 컴펙트 카메라 원터치 줌 시리즈, 니콘의 선명하고 생생한 결과물. 28~90mm 줌렌즈로 다양한 화각의 촬영가능</p>
               </div>
@@ -181,9 +184,9 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="https://the35mm.com/web/product/big/201603/12320_shop1_321377.jpg" alt=""></a>
               <div class="card-body">
-                <h5 class="card-title">
+                <h6 class="card-title">
                   <a href="#">펜탁스 미슈퍼 Me Super</a>
-                </h5>
+                </h6>
                 <h5>품절</h5>
                 <p class="card-text">1979년 처음 출시되어 1984년까지 판매된 펜탁스 M 시리즈 기종으로 작은크기와 가벼운 무게를 자랑함</p>
               </div>
@@ -205,18 +208,45 @@
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; team filsamiro</p>
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <!-- Search -->
+          <section id="search" class="alt">
+            <form method="post" action="#">
+              <input type="text" name="query" id="query" placeholder="Search" />
+            </form>
+          </section>
+
+          <!-- Menu -->
+          <nav id="menu">
+            <header class="major">
+              <h2>Menu</h2>
+            </header>
+            <ul>
+              <li><a href="{% url 'mainpage' %}">Homepage</a></li>
+              <li><a href="{% url 'main' %}">Community</a></li>
+              <li><a href="{% url 'camerashop' %}">cameraShop</a></li>
+              <li><a href="{% url 'cameraTest' %}">cameraTest</a></li>
+              <li><a href="{% url 'mypage' %}">My page</a></li>
+            </ul>
+          </nav>
+
+          <!-- Footer -->
+          <footer id="footer">
+            <p class="copyright">&copy; filsaemiro. All rights reserved.</p>
+          </footer>
+        </div>
+      </div>
     </div>
-    <!-- /.container -->
-  </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="script/vendor/jquery/jquery.min.js"></script>
-  <script src="script/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
+    <!-- Scripts -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/browser.min.js"></script>
+    <script src="static/js/breakpoints.min.js"></script>
+    <script src="static/js/util.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="script/vendor/jquery/jquery.min.js"></script>
+    <script src="script/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
