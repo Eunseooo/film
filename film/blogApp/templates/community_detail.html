@@ -1,6 +1,3 @@
-
-
-
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -13,6 +10,27 @@
     />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 	<link rel="stylesheet" href="{% static 'css/commudetail.css' %}" />
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Noto+Serif:ital@1&family=STIX+Two+Text:ital@1&display=swap" rel="stylesheet">
+
+
+<style>
+	.port-title {
+     font-size: 17px;
+     font-family: 'Noto Serif KR', serif;
+     margin-bottom: 15px;
+	 }
+
+	 img {
+     width: 70%; /* need to overwrite inline dimensions */
+     height: auto;
+     }
+
+
+</style>
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -22,7 +40,8 @@
 		  <div class="inner">
 			<!-- Header -->
 			<header id="header">
-				<a href="{% url 'mainpage' %}" class="logo"><strong>Filsamero</strong></a>
+				<a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
+            /></a>
 				{% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
 				<a href = "{% url 'logout' %}" >로그아웃</a>
 				{% else %} <!--로그인이 되어있지 않은 경우 -->
@@ -63,25 +82,33 @@
 			</header>
 			
 			<!-- Banner -->
-			<section id="banner">
+			
 			  <div class="content">
+
 				
-                <h2>{{title}}</h2>
-				<div class="clearfix"></div>
+				<div class="center">
+					<h2 class="port-title" style="font-size: 27px; margin-top: 30px;">
+						" {{title}} "
+					</h2>
+					<h2 class="port-title" style="font-size: 15px; margin-top: 20px;">
+						by. {{writer}}
+					</h2>
+				</div>
 
 				<hr>
-				<div>
-					<span>{{writer}}</span>
-					<span>:</span>
-					<span>{{pub_date}}</span>
-				</div>
+				
+		
+
 				<p></p>
 				<div class="center">
 					<img src="{{image.url}}" height="300"/>
 				</div>
 				<p></p>
+
+			
+
 				<div class="center">
-					<h3>{{body}}</h3>
+					<h3 class= "port-title">{{body}}</h3>
 				</div>
                 <p></p>
 
@@ -96,14 +123,14 @@
                 </p>
                 <section>
 					<header class="major">
-					  <h4>댓글</h4>
+					  <h3 class= "port-title">댓글</h3>
 					</header>
 				  </section>
                 
                 {% for comment in comments %}
                 <p>
                     {{comment.user}} | {{comment.content}} , {{comment.date}}
-                    <a href="{% url 'delete_comment' id comment.id %}">삭제</a>
+                    <a href="{% url 'delete_comment' id comment.id %}" class= "port-title">삭제</a>
                 </p>
                 {% endfor%}
                 
@@ -112,7 +139,7 @@
                     {%csrf_token%} 
                     <p>user: <input type="text" name="user" value="{{user}}"></p>
                     <p>content: <input type="text" name="content" value="{{content}}"></p>
-                    <button type="submit">작성</button>
+                    <button type="submit" class= "port-title">작성</button>
                 </form>
                 
 			  </div>
