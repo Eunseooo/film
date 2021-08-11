@@ -12,65 +12,6 @@
  <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
-
-  </head>
-  
-  <body> 
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-      <!-- Main -->
-      <div id="main">
-        <div class="inner">
-          <!-- Header -->
-          <header id="header">
-            <a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
-            /></a>
-            {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
-            <a href = "{% url 'logout' %}" >로그아웃</a>
-            {% else %} <!--로그인이 되어있지 않은 경우 -->
-            <a href = "{% url 'login' %}" >로그인</a>
-            <a href = "{% url 'signup' %}">회원가입</a>
-            {% endif %}
-    
-              {% if user.is_authenticated %}
-              {{user.username}}님 안녕하세요!
-              {% endif %}
-            <ul class="icons">
-              <li>
-                <a href="#" class="icon brands fa-twitter"
-                  ><span class="label">Twitter</span></a
-                >
-              </li>
-              <li>
-                <a href="#" class="icon brands fa-facebook-f"
-                  ><span class="label">Facebook</span></a
-                >
-              </li>
-              <li>
-                <a href="#" class="icon brands fa-snapchat-ghost"
-                  ><span class="label">Snapchat</span></a
-                >
-              </li>
-              <li>
-                <a href="#" class="icon brands fa-instagram"
-                  ><span class="label">Instagram</span></a
-                >
-              </li>
-              <li>
-                <a href="#" class="icon brands fa-medium-m"
-                  ><span class="label">Medium</span></a
-                >
-              </li>
-            </ul>
-          </header>
-
-       <!-- /.col-lg-3 -->
-
-      <div class="col-lg-12">
-
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
