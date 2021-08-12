@@ -21,8 +21,14 @@
         <div class="inner">
           <!-- Header -->
           <header id="header">
+<<<<<<< HEAD
             <a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
             /></a>-->
+=======
+          <a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
+            /></a>
+
+>>>>>>> bf99cee97640995c5f4163d439d6367e02fbc89c
             {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
             <a href = "{% url 'logout' %}" >로그아웃</a>
             {% else %} <!--로그인이 되어있지 않은 경우 -->

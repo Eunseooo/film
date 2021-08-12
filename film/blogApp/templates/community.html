@@ -25,7 +25,8 @@
 			<!-- Header -->
 			<header id="header">
 				
-			  <a href="{% url 'mainpage' %}" class="logo"><strong>Filsamero</strong></a>
+			  <a href="{% url 'mainpage' %}" class="logo"><img src="../images/logo.png" width=100px alt=""
+            /></a>
 			  {% if user.is_authenticated %} <!-- 로그인된 상태인지 체크 -->
 			  <a href = "{% url 'logout' %}" >로그아웃</a>
 			  {% else %} <!--로그인이 되어있지 않은 경우 -->
