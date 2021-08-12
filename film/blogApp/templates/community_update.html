@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+    </style>
     <title>Update</title>
-</head>
-<body>
-    <form action="{% url 'update' id %}" method="POST" enctype="multipart/form-data">
-        {%csrf_token%} 
-        <p>title: <input type="text" name="title" value="{{title}}" required></p>
-        <p>writer: <input type="text" name="writer" value="{{writer}}" required></p>
-        <p>body: <textarea name="body" cols="30" rows="10" required>{{body}}</textarea></p>
-        <p>image: <input type="file" name="image" value="{{image}}" required></p>
-        <button type="submit">작성</button>
+  </head>
+  <body>
+    <form
+      action="{% url 'update' id %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {%csrf_token%}
+      <p>
+        title: <input type="text" name="title" value="{{title}}" required />
+      </p>
+      <p>
+        writer: <input type="text" name="writer" value="{{writer}}" required />
+      </p>
+      <p>
+        body:
+        <textarea name="body" cols="30" rows="10" required>{{body}}</textarea>
+      </p>
+      <p>
+        image: <input type="file" name="image" value="{{image}}" required />
+      </p>
+      <button type="submit">작성</button>
     </form>
-</body>
+  </body>
 </html>
